@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cotizador de eventos en Colombia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<header class="top">
+  <div class="bandera" aria-hidden="true"></div>
+  <h1>Cotiza tu evento en Colombia</h1>
+  <p>Bodas, quince años, grados, conferencias, deportes y planes culturales para toda la familia. Responde cuatro pasos y recibe tu cotización.</p>
+</header>
+
+<main class="layout">
+  <form id="form" novalidate>
+    <ol class="steps" id="steps">
+      <li>Tus datos</li><li>Tu evento</li><li>Servicios</li><li>Cotización</li>
+    </ol>
+
+    <section class="panel" data-step="1">
+      <h2>Tus datos de contacto</h2>
+      <div class="campo"><label for="nombre">Nombre completo</label>
+        <input id="nombre" autocomplete="name" placeholder="Ej: Laura Gómez"><small class="err"></small></div>
+      <div class="campo"><label for="correo">Correo electrónico</label>
+        <input id="correo" type="email" autocomplete="email" placeholder="nombre@correo.com"><small class="err"></small></div>
+      <div class="campo"><label for="celular">Celular</label>
+        <input id="celular" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="3001234567"><small class="err"></small></div>
+    </section>
+
+    <section class="panel" data-step="2" hidden>
+      <h2>Cuéntanos sobre tu evento</h2>
+      <div class="campo"><label for="tipo">Tipo de evento</label>
+        <select id="tipo"></select><small class="err"></small></div>
+      <div class="fila">
+        <div class="campo"><label for="depto">Departamento</label>
+          <select id="depto"></select><small class="err"></small></div>
+        <div class="campo"><label for="ciudad">Ciudad o municipio</label>
+          <select id="ciudad"></select><small class="err"></small></div>
+      </div>
+      <div class="fila">
+        <div class="campo"><label for="fecha">Fecha del evento</label>
+          <input id="fecha" type="date"><small class="err"></small></div>
+        <div class="campo"><label for="invitados">Número de invitados</label>
+          <input id="invitados" type="number" min="10" max="5000" placeholder="Ej: 120"><small class="err"></small></div>
+      </div>
+      <fieldset class="campo radios"><legend>¿Asistirán niños?</legend>
+        <label><input type="radio" name="ninos" value="no" checked> No</label>
+        <label><input type="radio" name="ninos" value="si"> Sí, habrá niños</label>
+      </fieldset>
+      <div class="campo" id="wrap-ninosN" hidden><label for="ninosN">¿Cuántos niños asistirán?</label>
+        <input id="ninosN" type="number" min="1" placeholder="Ej: 20"><small class="err"></small></div>
+    </section>
+
+    <section class="panel" data-step="3" hidden>
+      <h2>Checklist de servicios</h2>
+      <p class="ayuda">Los servicios marcados con candado son obligatorios para este tipo de evento. Elige al menos uno más.</p>
+      <div id="lista"></div>
+      <small class="err" id="err-servicios"></small>
+    </section>
+
+    <section class="panel" data-step="4" hidden>
+      <h2>Revisa tu cotización</h2>
+      <div id="resumen"></div>
+      <div class="campo"><label class="check"><input type="checkbox" id="terminos">
+        Entiendo que el valor es un estimado, sujeto a confirmación y vigente por 15 días.</label>
+        <small class="err"></small></div>
+      <div id="banner" class="banner" hidden></div>
+    </section>
+
+    <div class="nav">
+      <button type="button" id="atras" class="sec">Atrás</button>
+      <button type="button" id="sig">Continuar</button>
+    </div>
+  </form>
+
+  <aside class="vivo" aria-live="polite">
+    <h2>Tu cotización</h2>
+    <dl id="vivo"></dl>
+  </aside>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
